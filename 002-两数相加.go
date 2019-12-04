@@ -10,7 +10,7 @@ import "git.forms.io/universe/dts/common/log"
 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
 输出：7 -> 0 -> 8
 原因：342 + 465 = 807
- */
+*/
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -18,17 +18,17 @@ type ListNode struct {
 
 func main() {
 	l1 := &ListNode{
-		Val: 0,
+		Val:  0,
 		Next: nil,
 	}
 	l2 := &ListNode{
 		Val: 7,
-		Next: &ListNode {
-			Val: 3,
+		Next: &ListNode{
+			Val:  3,
 			Next: nil,
 		},
 	}
-	l3 := addTwoNumbers(l1,l2)
+	l3 := addTwoNumbers(l1, l2)
 	log.Infof("%++v", l3)
 }
 
@@ -85,6 +85,45 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		}
 	}
 	if j == 1 {
+		s.Next = &ListNode{
+			Val:  1,
+			Next: nil,
+		}
+	}
+	return r.Next
+}
+
+// 无需补齐，直接记录每次相加的结果
+func addTwoNumbers2(l1 *ListNode, l2 *ListNode) *ListNode {
+	r := &ListNode{}
+	s := r
+	var sum int
+	var carry bool
+	for l1 != nil || l2 != nil {
+		sum = 0
+		if l1 != nil {
+			sum += l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			sum += l2.Val
+			l2 = l2.Next
+		}
+		if carry {
+			sum += 1
+		}
+		s.Next = &ListNode{
+			Val:  sum % 10,
+			Next: nil,
+		}
+		s = s.Next
+		if sum > 9 {
+			carry = true
+		} else {
+			carry = false
+		}
+	}
+	if carry {
 		s.Next = &ListNode{
 			Val:  1,
 			Next: nil,
