@@ -64,3 +64,11 @@ func getmax(a, b int) int {
 		return b
 	}
 }
+
+func getmin(a, b int) int {
+	if a > b {
+		return b
+	} else {
+		return a
+	}
+}
