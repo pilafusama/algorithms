@@ -12,3 +12,4 @@
 *.out
 *.xml
 *.iml
+test.go
