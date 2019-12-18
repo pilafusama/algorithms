@@ -185,3 +185,38 @@ func longestPalindrome6(s string) string {
 	}
 	return test
 }
+
+// 扩展中心
+func longestPalindrome7(s string) string {
+	if s == "" {
+		return s
+	}
+	var start int
+	var end int
+	for i := 0; i < len(s); i++ {
+		len1 := getLen(s, i, i)
+		len2 := getLen(s, i, i+1)
+		len3 := getmax3(len1, len2)
+		if len3 > end-start+1 {
+			start = i - (len3-1)/2
+			end = i + len3/2
+		}
+	}
+	return s[start : end+1]
+}
+
+func getLen(s string, left int, right int) int {
+	for left >= 0 && right < len(s) && s[left] == s[right] {
+		left--
+		right++
+	}
+	return right - left - 1
+}
+
+func getmax3(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
+}
