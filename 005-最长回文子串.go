@@ -17,7 +17,7 @@ func longestPalindrome(s string) string {
 	var test string
 	for i := 0; i < len(s); i++ {
 		for j := i + 1; j <= len(s); j++ {
-			if isPalindrome(s[i:j]) && j-i > max {
+			if isPalindrome2(s[i:j]) && j-i > max {
 				test = s[i:j]
 				max = j - i
 			}
@@ -26,7 +26,7 @@ func longestPalindrome(s string) string {
 	return test
 }
 
-func isPalindrome(s string) bool {
+func isPalindrome2(s string) bool {
 	for i := 0; i < len(s)/2; i++ {
 		if s[i] != s[len(s)-i-1] {
 			return false
