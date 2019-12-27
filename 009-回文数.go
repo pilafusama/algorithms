@@ -7,7 +7,7 @@ func isPalindrome(x int) bool {
 	var revertedNumber int
 	for x > revertedNumber {
 		revertedNumber = revertedNumber*10 + x%10
-		x = x/10
+		x = x / 10
 	}
 	if x == revertedNumber || x == revertedNumber/10 {
 		return true
