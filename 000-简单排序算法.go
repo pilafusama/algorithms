@@ -1,26 +1,17 @@
 package main
 
+import "fmt"
+
 func main() {
-	m := make(map[string]interface{})
-	if m == nil {
-		println("nil")
-	} else {
-		println("not nil")
-		if m["xx"] == nil {
-			println("xx nil")
-		}
-
-	}
-
 	arr := []int{9, 7, 3, 5, 1, 15, 11}
 
 	//BubbleSort(arr)
 	//SelectSort(arr)
-	//QuickSort(arr, 0, 6)
+	QuickSort(arr, 0, 6)
 	//InsertSort(arr)
 	//ShellSort(arr)
-	MergeSort(arr)
-	//fmt.Println(arr)
+	//MergeSort(arr)
+	fmt.Println(arr)
 }
 
 func BubbleSort(arr []int) {
